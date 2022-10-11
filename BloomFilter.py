@@ -41,6 +41,7 @@ class BloomFilter:
         self.hash_functions = hash_functions
         self.bits = bits
         self.elements = elements
+        self.filter = [False]*(self.bits*self.elements)
 
     def add(self, item: str) -> None:
         """
@@ -49,6 +50,12 @@ class BloomFilter:
         """
 
         # TODO: Fill this in
+        # Hash the string and get all the results
+        hash_results = [self.hash_functions[i](item) for i in range(0, len(self.hash_functions))]
+
+        # flip the bit on the hash result corresponding index
+
+
 
     def get(self, item: str) -> bool:
         """
