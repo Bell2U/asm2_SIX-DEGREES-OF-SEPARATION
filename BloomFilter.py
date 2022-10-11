@@ -38,6 +38,9 @@ class BloomFilter:
         """
 
         # TODO: Fill this in
+        self.hash_functions = hash_functions
+        self.bits = bits
+        self.elements = elements
 
     def add(self, item: str) -> None:
         """
