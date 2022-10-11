@@ -61,7 +61,11 @@ class BloomFilter:
         hash_results = [self.hash_functions[i](item) for i in range(0, len(self.hash_functions))]
 
         # flip the bit on the hash result corresponding index
-
+        for filter_idx in hash_results:
+            self.filter[filter_idx] = True
+        
+        # current_elements increment 
+        self.currnt_elements += 1
 
 
     def get(self, item: str) -> bool:
