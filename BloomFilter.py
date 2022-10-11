@@ -1,3 +1,4 @@
+import re
 from typing import Callable, List
 
 """
@@ -42,6 +43,8 @@ class BloomFilter:
         self.bits = bits
         self.elements = elements
         self.filter = [False]*(self.bits*self.elements)
+        self.currnt_elements = 0
+        
 
     def add(self, item: str) -> None:
         """
@@ -50,6 +53,10 @@ class BloomFilter:
         """
 
         # TODO: Fill this in
+        # check if the bloom filter reaches to its maximum capasity
+        if self.currnt_elements > self.elements:
+            return
+
         # Hash the string and get all the results
         hash_results = [self.hash_functions[i](item) for i in range(0, len(self.hash_functions))]
 
