@@ -60,7 +60,7 @@ class BloomFilter:
         # Hash the string and get all the results
         hash_results = [self.hash_functions[i](item) for i in range(0, len(self.hash_functions))]
 
-        # flip the bit on the hash result corresponding index
+        # flip the bit on the index indicated by hash result
         for filter_idx in hash_results:
             self.filter[filter_idx] = True
         
@@ -76,3 +76,11 @@ class BloomFilter:
         """
 
         # TODO: Fill this in
+        # hash the string with all the hash functions
+        hash_results = [self.hash_functions[i](item) for i in range(0, len(self.hash_functions))]
+
+        # check if the corresponding bits are all one
+        for filter_idx in hash_results:
+            if self.filter[filter_idx] is False:
+                return False
+        return True
